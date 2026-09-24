@@ -12,25 +12,26 @@ cv:
 
   address:
     city: Mexico City
+    region: Mexico
     countryCode: MX
 
   sections:
     Education:
       - institution: McMaster University
         location: Hamilton, Canada
-        area: Biomedical Engineering
+        area: Biomedical Engineering (2018)
         studyType: Ph.D.
         end_date: 2018
 
       - institution: Universidad Autónoma Metropolitana (UAM)
         location: Mexico
-        area: Biomedical Engineering
+        area: Biomedical Engineering (2011)
         studyType: M.Sc.
         end_date: 2011
 
       - institution: Universidad Nacional Autónoma de México (UNAM)
         location: Mexico
-        area: Electrical & Electronic Engineering
+        area: Electrical & Electronic Engineering (2009)
         studyType: B.Eng.
         end_date: 2009
 
