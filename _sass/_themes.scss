@@ -1,0 +1,170 @@
+/*******************************************************************************
+ * Themes (local override of the al_folio_core gem's _sass/_themes.scss)
+ *
+ * Custom palette: dark blue background (#212AC4) in both light and dark mode.
+ * Text and link colors are chosen to keep WCAG AA contrast on the blue:
+ *   - #ffffff text on #212AC4  -> 9.6:1
+ *   - #8fe3ff links on #212AC4 -> 6.7:1
+ * To change the background later, edit $site-bg-color below.
+ ******************************************************************************/
+
+$site-bg-color: #212ac4;
+$site-card-bg-color: #1b22a3;
+$site-footer-bg-color: #141a80;
+$site-text-color: #ffffff;
+$site-text-color-light: #d6d9ff;
+$site-link-color: #8fe3ff;
+
+// Shared blue palette, used by both the light (default) and dark themes
+@mixin blue-palette {
+  --global-bg-color: #{$site-bg-color};
+  --global-code-bg-color: rgba(255, 255, 255, 0.12);
+  --global-text-color: #{$site-text-color};
+  --global-text-color-light: #{$site-text-color-light};
+  --global-theme-color: #{$site-link-color};
+  --global-hover-color: #{$site-link-color};
+  --global-hover-text-color: #{$site-footer-bg-color};
+  --global-footer-bg-color: #{$site-footer-bg-color};
+  --global-footer-text-color: #e8e8e8;
+  --global-footer-link-color: #ffffff;
+  --global-distill-app-color: #e8e8e8;
+  --global-divider-color: rgba(255, 255, 255, 0.2);
+  --global-card-bg-color: #{$site-card-bg-color};
+  --global-highlight-color: #ffb4a9;
+  --global-back-to-top-bg-color: rgba(255, 255, 255, 0.5);
+  --global-back-to-top-text-color: #000000;
+  --global-newsletter-bg-color: #ffffff;
+  --global-newsletter-text-color: #000000;
+
+  --global-tip-block: #42b983;
+  --global-tip-block-bg: #215d42;
+  --global-tip-block-text: #beffe2;
+  --global-tip-block-title: #e2f5ec;
+  --global-warning-block: #e7c000;
+  --global-warning-block-bg: #6b5900;
+  --global-warning-block-text: #fff2af;
+  --global-warning-block-title: #fff8d8;
+  --global-danger-block: #c00;
+  --global-danger-block-bg: #600;
+  --global-danger-block-text: #ffb9b9;
+  --global-danger-block-title: #ffe0e0;
+}
+
+:root {
+  color-scheme: dark;
+  @include blue-palette;
+
+  #light-toggle-system {
+    display: inline-block;
+  }
+
+  #light-toggle-dark {
+    display: none;
+  }
+
+  #light-toggle-light {
+    display: none;
+  }
+
+  .only-light {
+    display: block;
+  }
+
+  .only-dark {
+    display: none;
+  }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  @include blue-palette;
+
+  .only-light {
+    display: none;
+  }
+
+  .only-dark {
+    display: block;
+  }
+}
+
+html[data-theme-setting="dark"] {
+  #light-toggle-system {
+    display: none;
+  }
+
+  #light-toggle-dark {
+    display: inline-block;
+  }
+
+  #light-toggle-light {
+    display: none;
+  }
+}
+
+html[data-theme-setting="light"] {
+  #light-toggle-system {
+    display: none;
+  }
+
+  #light-toggle-dark {
+    display: none;
+  }
+
+  #light-toggle-light {
+    display: inline-block;
+  }
+}
+
+.fa-half-sun-moon {
+  position: relative;
+  display: inline-block;
+
+  --fa-font: var(--fa-font-solid);
+  speak: none;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 1em;
+  height: 1em;
+}
+
+.fa-half-sun-moon::before,
+.fa-half-sun-moon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: -0.5px;
+  bottom: -0.5px;
+  text-align: center;
+  line-height: 1em;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  font: var(--fa-font);
+}
+
+/* Left half: MOON */
+.fa-half-sun-moon::before {
+  content: "\f111";
+  color: var(--global-text-color);
+  clip-path: polygon(0 0, calc(50% - 0.5px) 0, calc(50% - 0.5px) 100%, 0 100%);
+}
+
+/* Right half: SUN */
+.fa-half-sun-moon::after {
+  content: "\f185";
+  color: var(--global-text-color);
+  clip-path: polygon(calc(50% + 0.5px) 0, 100% 0, 100% 100%, calc(50% + 0.5px) 100%);
+  right: -1.5px; /* slight overflow to avoid right-edge clipping */
+  transform: translateX(-1px); /* visually re-center the sun half */
+}
+
+#light-toggle:hover .fa-half-sun-moon::before {
+  color: var(--global-theme-color);
+}
+
+#light-toggle:hover .fa-half-sun-moon::after {
+  color: var(--global-theme-color);
+}
