@@ -1,36 +1,37 @@
 /*******************************************************************************
  * Themes (local override of the al_folio_core gem's _sass/_themes.scss)
  *
- * Custom palette: dark blue background (#212AC4) in both light and dark mode.
- * Text and link colors are chosen to keep WCAG AA contrast on the blue:
- *   - #ffffff text on #212AC4  -> 9.6:1
- *   - #8fe3ff links on #212AC4 -> 6.7:1
- * To change the background later, edit $site-bg-color below.
+ * Custom palette: black background (#000000) in both light and dark mode.
+ * Text and link colors are chosen to keep WCAG AA contrast on black:
+ *   - #e8e8e8 text on #000000  -> 17.1:1
+ *   - #2698ba links on #000000 -> 6.3:1
+ * To change the colors later, edit the $site-* variables below.
  ******************************************************************************/
 
-$site-bg-color: #212ac4;
-$site-card-bg-color: #1b22a3;
-$site-footer-bg-color: #141a80;
-$site-text-color: #ffffff;
-$site-text-color-light: #d6d9ff;
-$site-link-color: #8fe3ff;
+$site-bg-color: #000000;
+$site-card-bg-color: #121212;
+$site-footer-bg-color: #1c1c1d;
+$site-text-color: #e8e8e8;
+$site-text-color-light: #a0a0a0;
+$site-link-color: #2698ba;
+$site-hover-text-color: #000000;
 
-// Shared blue palette, used by both the light (default) and dark themes
-@mixin blue-palette {
+// Shared palette, used by both the light (default) and dark themes
+@mixin site-palette {
   --global-bg-color: #{$site-bg-color};
-  --global-code-bg-color: rgba(255, 255, 255, 0.12);
+  --global-code-bg-color: #1e1e1e;
   --global-text-color: #{$site-text-color};
   --global-text-color-light: #{$site-text-color-light};
   --global-theme-color: #{$site-link-color};
   --global-hover-color: #{$site-link-color};
-  --global-hover-text-color: #{$site-footer-bg-color};
+  --global-hover-text-color: #{$site-hover-text-color};
   --global-footer-bg-color: #{$site-footer-bg-color};
   --global-footer-text-color: #e8e8e8;
   --global-footer-link-color: #ffffff;
   --global-distill-app-color: #e8e8e8;
-  --global-divider-color: rgba(255, 255, 255, 0.2);
+  --global-divider-color: #333333;
   --global-card-bg-color: #{$site-card-bg-color};
-  --global-highlight-color: #ffb4a9;
+  --global-highlight-color: #ff8a80;
   --global-back-to-top-bg-color: rgba(255, 255, 255, 0.5);
   --global-back-to-top-text-color: #000000;
   --global-newsletter-bg-color: #ffffff;
@@ -52,7 +53,7 @@ $site-link-color: #8fe3ff;
 
 :root {
   color-scheme: dark;
-  @include blue-palette;
+  @include site-palette;
 
   #light-toggle-system {
     display: inline-block;
@@ -77,7 +78,7 @@ $site-link-color: #8fe3ff;
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  @include blue-palette;
+  @include site-palette;
 
   .only-light {
     display: none;
