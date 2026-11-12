@@ -22,6 +22,7 @@ nav_order: 9
 
 {% for category in site.data.students.categories -%}
 {%- if category.students.size > 0 %}
+
 <h2 id="{{ category.id }}">{{ category.label }}</h2>
 <div class="students-grid">
 {%- for student in category.students %}
